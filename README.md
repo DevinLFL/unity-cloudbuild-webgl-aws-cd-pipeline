@@ -55,3 +55,9 @@ After that, you're all set here
 Just need to set up a bucket, and make that bucket public. You can upload the files, then make the files all public, or you can change the permissions to the files to have Read access by everyone
 ### Unity Cloud Build ### 
 Configure a web hook on Unity Cloud build on successful build to the API root that you created on AWS API Gateway (to the post reciever configured on API Gateway, and with application/json as the payload)
+
+### Possible improvements ###
+
+- Inject a "Deployer" class into the funcion so we can make a mock test, or exclude certain files from the deploy
+- Move decorator to another file
+
