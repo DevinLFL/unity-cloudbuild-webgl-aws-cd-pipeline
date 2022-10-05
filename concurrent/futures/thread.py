@@ -5,7 +5,7 @@
 
 import atexit
 from concurrent.futures import _base
-import Queue as queue
+import queue as queue
 import threading
 import weakref
 import sys
@@ -36,7 +36,7 @@ def _python_exit():
     for t, q in items:
         q.put(None)
     for t, q in items:
-        t.join(sys.maxint)
+        t.join(sys.maxsize)
 
 atexit.register(_python_exit)
 
@@ -130,5 +130,5 @@ class ThreadPoolExecutor(_base.Executor):
             self._work_queue.put(None)
         if wait:
             for t in self._threads:
-                t.join(sys.maxint)
+                t.join(sys.maxsize)
     shutdown.__doc__ = _base.Executor.shutdown.__doc__

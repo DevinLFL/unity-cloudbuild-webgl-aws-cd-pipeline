@@ -45,7 +45,7 @@ Process #1..n:
 
 import atexit
 from concurrent.futures import _base
-import Queue as queue
+import queue as queue
 import multiprocessing
 import threading
 import weakref
@@ -77,7 +77,7 @@ def _python_exit():
     for t, q in items:
         q.put(None)
     for t, q in items:
-        t.join(sys.maxint)
+        t.join(sys.maxsize)
 
 # Controls how many more calls than processes will be queued in the call queue.
 # A smaller number will mean that processes spend more time idle waiting for
@@ -347,7 +347,7 @@ class ProcessPoolExecutor(_base.Executor):
             # Wake up queue management thread
             self._result_queue.put(None)
             if wait:
-                self._queue_management_thread.join(sys.maxint)
+                self._queue_management_thread.join(sys.maxsize)
         # To reduce the risk of openning too many files, remove references to
         # objects that use file descriptors.
         self._queue_management_thread = None

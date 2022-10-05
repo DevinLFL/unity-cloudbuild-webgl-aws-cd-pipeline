@@ -9,7 +9,7 @@ import re
 
 # Python 2/3 support
 try:
-    from urlparse import urlparse
+    from urllib.parse import urlparse
 except ImportError:
     from urllib.parse import urlparse
 
@@ -160,7 +160,7 @@ class S3Auth(AuthBase):
         amz_dict = {}
 
         # Go over the existing headers
-        for k, v in headers.items():
+        for k, v in list(headers.items()):
             # Decode the keys if they are encoded
             if isinstance(k, bytes):
                 k = k.decode('ascii')

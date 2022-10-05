@@ -164,7 +164,7 @@ class BaseSelector(object):
         except ValueError:
 
             # Search through all our mapped keys.
-            for key in self._fd_to_key.values():
+            for key in list(self._fd_to_key.values()):
                 if key.fileobj is fileobj:
                     return key.fd
 

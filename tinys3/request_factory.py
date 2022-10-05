@@ -15,7 +15,7 @@ import os
 import requests
 # Python 2/3 compatibility
 try:
-    from urllib import quote
+    from urllib.parse import quote
 except ImportError:
     from urllib.parse import quote
 
